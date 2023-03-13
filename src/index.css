@@ -1,0 +1,14 @@
+:root {
+
+  color: #ffffff;
+  background-color: #121213;
+}
+
+
+body {
+  margin: 2px;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+

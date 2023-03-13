@@ -1,0 +1,43 @@
+.wordle-row{
+  margin-top: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.wordle-box{
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  border: 2px #808080bd solid;
+  display: inline-block;
+  margin: 2px;
+}
+
+.wordle-cols{
+  display: flex;
+}
+
+.box-value{
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  margin: auto;
+  font-weight: bolder;
+  height: 100%;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.green{
+  background-color: #538d4e;
+  
+}
+.grey{
+  background-color: #3a3a3c;
+}
+.yellow{
+  background-color: #b59f3b;
+}
+.none{
+  background-color: '';
+}
