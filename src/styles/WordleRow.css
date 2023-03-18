@@ -29,14 +29,14 @@
 }
 
 .green{
-  background-color: #538d4e;
+  background-color: green;
   
 }
 .grey{
-  background-color: #3a3a3c;
+  background-color: gray;
 }
 .yellow{
-  background-color: #b59f3b;
+  background-color: yellow;
 }
 .none{
   background-color: '';

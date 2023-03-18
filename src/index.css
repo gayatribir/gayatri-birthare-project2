@@ -1,14 +1,12 @@
 :root {
-
   color: #ffffff;
   background-color: #121213eb;
 }
 
-
 body {
-  margin: 2px;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  /* background-color: beige; */
 }
 
