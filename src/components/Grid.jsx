@@ -13,7 +13,7 @@ export default function Grid({attemptedWords, letter, tries, recentWord, color})
           { [...Array(tries).keys()]
           // .map(i => attemptedWords.length > i ? [attemptedWords[i], color[i]]: [attemptedWords.length==i?recentWordProcessed : emptyWord, colorSetProcessed])
           .map(i => attemptedWords.length > i ? [attemptedWords[i], color[i]]: [attemptedWords.length==i?recentWordProcessed : emptyWord, emptyColor])
-          .map(p => {console.log(letter); return p})
+          .map(p => {console.log(color); return p})
           // .map((p, idx) => <WordleRow key={idx} word={p[0]}  attempted={p[1]} size={letter}/>)}
           .map((p, idx) => <WordleRow key={idx} word={p[0]} color={p[1]}/>)}
         </div>

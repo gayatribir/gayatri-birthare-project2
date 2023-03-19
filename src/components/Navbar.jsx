@@ -1,14 +1,13 @@
 import {Link, useMatch, useResolvedPath} from "react-router-dom"
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 function Navbar({gamePath}){
-  console.log("In NavBar, gamePath=",gamePath);
+  // console.log("In NavBar, gamePath=",gamePath);
   return (
     <nav className="nav">
-      <Link to="/" className="site-title">Wordle Game</Link>
+      <Link to="/" className="site-title rainbow-lr" >Wordle Game</Link>
       <ul>
         <CustomLink to="/rules">Rules</CustomLink>
-        <CustomLink to={gamePath} >Play Wordle</CustomLink>
       </ul>
     </nav>
   )
