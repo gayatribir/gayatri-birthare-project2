@@ -6,6 +6,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useNavigate } from 'react-router-dom';
 import sixLetterWords from '../data/secretKey.json'
 import sevenLetterWords from '../data/sevenLetterKeys.json';
+import ResetGame from "./ResetGame";
+import Prompt from "./Prompt";
 
 const getRandWordFromCatlog = (isHard) => isHard 
 ? sevenLetterWords.keys[Math.floor(Math.random() * sevenLetterWords.keys.length)].toUpperCase() 
@@ -94,16 +96,18 @@ export default function WordleEvent(){
         setAttemptedWords([]);
         setAnswer(getRandWordFromCatlog(isHard));
       }
-    }, 500);
+    }, 50);
   });  
 
   const color = attemptedWords.map(word => calcColor(word, answerKey))
 
   return(
-    <div >      
+    <div className="div-wordle">      
       <Grid attemptedWords={attemptedWords} letter={letter} tries={tries} recentWord={recentWord} color={color}/>
       <ToastContainer position="top-right" autoClose={2000}/>
-      <div className="answer-div">{answerKey}</div>
+      <Prompt></Prompt>
+      <ResetGame difficultyLevel={difficultyLevel} attemptedWords={attemptedWords}></ResetGame>
+      <div>{answerKey}</div>
     </div>
   );
 }

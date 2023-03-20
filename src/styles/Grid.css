@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10%;
+  padding-top: 10%;
+  padding-bottom: 5%;
 }
 
 .wordle-grid-div{
