@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react"
 import { AppContext } from "./context"
 
+
+
+
 const AppProvider = (props) => {
   const[difficultyLevel, setDifficultyLevel] = useState("normal");
+  const [recentWord, setRecentWord] = useState("");
+  const [attemptedWords, setAttemptedWords] = useState([])
+  const [answerKey, setAnswer] = useState("")
 
-  // setDifficultyLevel("HARD");
+  
   return (
-      <AppContext.Provider value = {{difficultyLevel, setDifficultyLevel}}>
+      <AppContext.Provider value = {{difficultyLevel, setDifficultyLevel, recentWord, setRecentWord, attemptedWords, setAttemptedWords,answerKey,setAnswer}}>
           {props.children}
       </AppContext.Provider>
   )

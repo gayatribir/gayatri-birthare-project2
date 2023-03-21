@@ -1,5 +1,5 @@
 import React from "react";
-import WordleRow from "./WordleRow";
+import WordleRow from "./Row";
 
 export default function Grid({attemptedWords, letter, tries, recentWord, color}){
   const emptyWord = [...Array(letter).keys()].map(i => " ").join('');

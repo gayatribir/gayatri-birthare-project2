@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import Grid from './Grid';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useParams, useNavigate } from 'react-router-dom';
-import sixLetterWords from '../data/secretKey.json'
-import sevenLetterWords from '../data/sevenLetterKeys.json';
 import ResetGame from "./ResetGame";
 import Prompt from "./Prompt";
+import { AppContext } from '../context';
+import sixLetterWords from '../data/secretKey.json'
+import sevenLetterWords from '../data/sevenLetterKeys.json';
 
 const getRandWordFromCatlog = (isHard) => isHard 
 ? sevenLetterWords.keys[Math.floor(Math.random() * sevenLetterWords.keys.length)].toUpperCase() 
@@ -18,7 +18,6 @@ const freqMap = (answerKey) => {
   for (const num of answerKey) {
     counts[num] = counts[num] ? counts[num] + 1 : 1;
   }
-  
   return counts;
 };
 
@@ -54,43 +53,22 @@ export default function WordleEvent(){
   const isHard = difficultyLevel.toLocaleUpperCase() == "HARD";
   const letter = isHard ? 7: 6;
   const tries = isHard ? 5 : 6;
+  const appCtx = useContext(AppContext);
 
-  const [answerKey, setAnswer] = useState(getRandWordFromCatlog(isHard))
-  const [attemptedWords, setAttemptedWords] = useState([])
-  const [recentWord, setRecentWord] = useState("")
+  const [answerKey, setAnswer] = useState(getRandWordFromCatlog(isHard));
+  const [attemptedWords, setAttemptedWords] = [appCtx.attemptedWords,appCtx.setAttemptedWords]
+  const [recentWord, setRecentWord] = [appCtx.recentWord,appCtx.setRecentWord]
 
-  const displayTooShortMessage = () =>{
-    toast.error("Word is too small!"); // new line
-  };
+  
 
-  const handleKeyDown = (event)=> {
+  const handleKeyDown = ()=> {
     if(attemptedWords.indexOf(answerKey)>=0) return;
-
-    if(event.keyCode == 13){//Enter Pressed
-      if(recentWord.length < answerKey.length){
-        console.log(recentWord.length, answerKey.length);
-        displayTooShortMessage(); return;
-      }
-      
-      setAttemptedWords([...attemptedWords, recentWord]);
-      setRecentWord("");
-    }
-    else if(String.fromCharCode(event.keyCode).match(/(\w|\s)/g)){//alphabet pressed
-      if(recentWord.length < letter){setRecentWord(recentWord + String.fromCharCode(event.keyCode).toUpperCase());}
-      else{setRecentWord(String.fromCharCode(event.keyCode).toUpperCase());}
-    } else if(event.key === "Backspace" || event.key === "Delete"){//backspace pressed
-      setRecentWord(recentWord.slice(0,-1));
-    }
+    setAttemptedWords([...attemptedWords, recentWord]);
+    setRecentWord("");
   }
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [handleKeyDown]);
-
-  useEffect(() => {
+    if(recentWord != ""){handleKeyDown();}
     setTimeout(() => {
       if (attemptedWords.indexOf(answerKey)>=0 && window.confirm("Congratulations! Would you like to try again?")) {
         setAttemptedWords([]);
@@ -104,9 +82,8 @@ export default function WordleEvent(){
   return(
     <div className="div-wordle">      
       <Grid attemptedWords={attemptedWords} letter={letter} tries={tries} recentWord={recentWord} color={color}/>
-      <ToastContainer position="top-right" autoClose={2000}/>
       <Prompt></Prompt>
-      <ResetGame difficultyLevel={difficultyLevel} attemptedWords={attemptedWords}></ResetGame>
+      <ResetGame></ResetGame>
       <div>{answerKey}</div>
     </div>
   );

@@ -4,11 +4,17 @@ import React, { useState,useContext } from 'react'
 import { AppContext } from './context';
 
 export default function Home(){
-  const [difficultyLevel, setDifficultyLevel] = useState("normal")
+  
   const appCtx = useContext(AppContext);
+  const {difficultyLevel, setDifficultyLevel, recentWord, setRecentWord} = appCtx;
+  const [level, setLevel] = useState("normal");
   
   const onLevelChange = (event) =>{
-    setDifficultyLevel(event.target.value);
+    setLevel(event.target.value);
+  }
+
+  const onLevelSubmit = () =>{
+    setDifficultyLevel(level)
   }
 
   return (
@@ -20,7 +26,7 @@ export default function Home(){
             <option value="normal">Normal</option>
             <option value="hard">Hard</option>
           </select>&nbsp;&nbsp;
-          <input role="button" tabIndex="0" type="submit" className="btn btn-outline-primary btn-sm" value="Play!" onClick={()=>appCtx.setDifficultyLevel(difficultyLevel)}></input>
+          <input role="button" tabIndex="0" type="submit" className="btn btn-outline-primary btn-sm" value="Play!" onClick={onLevelSubmit}></input>
         </label>
       </p>
     </div>
