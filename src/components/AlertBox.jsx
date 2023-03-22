@@ -15,7 +15,7 @@ export default function AlertBox({show: defaultShow}) {
  
 
   return (
-      <Modal show={show} onHide={handleClose}>
+      <Modal size='sm' show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
           <Modal.Title>Yayy!</Modal.Title>
         </Modal.Header>

@@ -11,6 +11,7 @@ import Home from './Home';
 import './styles/Home.css';
 import Navbar from './components/Navbar';
 import React from 'react'
+import './styles/Rules.css';
 
 
 function App() {

@@ -13,11 +13,11 @@ function Navbar({gamePath}){
   )
 }
 
+
 function CustomLink({to, children, ...props}){
-  const resolvedPath = useResolvedPath(to)
-  const isActive = useMatch({ path: resolvedPath.pathname, end:true})
+  // const resolvedPath = useResolvedPath(to)
   return (
-    <li className="">
+    <li className="rules-link">
       <Link to={to} {...props}>{children}</Link>
     </li>
   )
