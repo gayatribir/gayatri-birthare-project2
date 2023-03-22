@@ -10,7 +10,7 @@ export default function WordleRow({word, color}){
   
       {word.split('').map((i,idx)=><div key={idx} className={
         `wordle-box 
-        ${color[idx] == "1" ? 'green bounce' : color[idx] == "2" ? 'yellow shake' : color[idx] == " " ? 'none':'grey'}`}><p className="box-value">{i}</p></div>)}
+        ${color[idx] == "1" ? 'green' : color[idx] == "2" ? 'yellow' : color[idx] == " " ? 'none':'grey'}`}><p className="box-value">{i}</p></div>)}
     </div>   
   );
 }
