@@ -99,7 +99,7 @@ export default function WordleEvent(){
         <Grid attemptedWords={attemptedWords} letter={letter} tries={tries} recentWord="" color={color}/>
         {(attemptedWords.indexOf(answerKey)===-1) ? <Prompt key={attemptedWords.length} letter={letter}/>: <AlertBox show={attemptedWords.indexOf(answerKey)>=0}/>}
         <ResetGame></ResetGame>
-        <div>{answerKey}</div>
+        {/* <div>{answerKey}</div> */}
       </div>
     </AppContext.Provider>
   );

@@ -35,15 +35,15 @@ export default function Prompt({letter}){
   const handleEnter = (event) => {
     if (event.key === 'Enter') {
       if(promptWord.length != letter){toast.error("Please enter "+letter+" letter word!");return;}
-      // if(letter == 6){ 
-      //   if (!isValidSixLetters(promptWord.toLowerCase())) {
-      //     toast.error("Invalid word entered!");return;
-      //   }
-      // }else{
-      //   if (!isValidSevenLetters(promptWord.toLowerCase())) {
-      //     toast.error("Invalid word entered!");return;
-      //   }
-      // }
+      if(letter == 6){ 
+        if (!isValidSixLetters(promptWord.toLowerCase())) {
+          toast.error("Invalid word entered!");return;
+        }
+      }else{
+        if (!isValidSevenLetters(promptWord.toLowerCase())) {
+          toast.error("Invalid word entered!");return;
+        }
+      }
       
       dispatch({type:"ATTEMPT", payload: promptWord});
     }
