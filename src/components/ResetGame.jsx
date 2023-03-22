@@ -12,7 +12,7 @@ export default function ResetGame(){
   
   return (
     <div className="btn-reset-game">
-      <input role="button" type='submit' className="btn btn-outline-primary btn-sm" value="Start new challenge!" onClick={handleResetGame}></input>
+      <input role="button" type='submit' className="btn btn-primary btn-sm" value="Start new challenge!" onClick={handleResetGame}></input>
     </div>
   );
 }

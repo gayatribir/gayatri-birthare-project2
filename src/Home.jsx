@@ -26,7 +26,7 @@ export default function Home(){
             <option value="normal">Normal</option>
             <option value="hard">Hard</option>
           </select>&nbsp;&nbsp;
-          <input role="button" tabIndex="0" type="submit" className="btn btn-outline-primary btn-sm" value="Play!" onClick={onLevelSubmit}></input>
+          <input role="button" tabIndex="0" type="submit" className="btn btn-primary btn-sm" value="Play!" onClick={onLevelSubmit}></input>
         </label>
       </p>
     </div>
