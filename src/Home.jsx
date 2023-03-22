@@ -1,21 +1,21 @@
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
-import React, { useState,useContext } from 'react'
-import { AppContext } from './context';
+import React, { useState} from 'react'
+import {useNavigate} from "react-router-dom"
+
 
 export default function Home(){
-  
-  const appCtx = useContext(AppContext);
-  const {difficultyLevel, setDifficultyLevel, recentWord, setRecentWord} = appCtx;
   const [level, setLevel] = useState("normal");
-  
+  const navigate = useNavigate();
+
   const onLevelChange = (event) =>{
     setLevel(event.target.value);
   }
 
   const onLevelSubmit = () =>{
-    setDifficultyLevel(level)
+    navigate("/game/"+level);
   }
+
 
   return (
     <div className="home-margin">

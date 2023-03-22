@@ -2,35 +2,28 @@ import React from 'react'
 import { AppContext } from '../context';
 import { useEffect, useState, useContext } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import AlertBox from './AlertBox';
 
-export default function Prompt(){
+export default function Prompt({letter}){
   const appCtx = useContext(AppContext);
-  const {difficultyLevel, setDifficultyLevel, recentWord, setRecentWord} = appCtx;
-  const letter = difficultyLevel.toUpperCase()=="HARD" ? 7: 6;
+  const {dispatch} = appCtx;
   const [promptWord, setPromptWord] = useState("")
 
   const handleOnChange = (event)=> {
-    // console.log(event.target.value);
-    if(event.target.value.match(/(\w|\s)/g)){//alphabet pressed
-      setPromptWord(event.target.value.toUpperCase());
-      
-    } else if(event.key === "Backspace" || event.key === "Delete"){//backspace pressed
-      setPromptWord(promptWord.slice(0,-1));
-    }
+    setPromptWord(event.target.value.trim().toUpperCase());
   }
   const handleEnter = (event) => {
     if (event.key === 'Enter') {
       if(promptWord.length != letter){toast.error("Please enter "+letter+" letter word!");return;}
-      setRecentWord(promptWord);
+      dispatch({type:"ATTEMPT", payload: promptWord});
     }
   }
-  useEffect(() => {
-      if(recentWord != ""){setPromptWord("");}
-    }, );
+
   return (
    <div>
      <input role="textbox" type='text' className="user-prompt-input" onChange={handleOnChange} onKeyDown={handleEnter} value={promptWord}/>
       <ToastContainer position="top-right" autoClose={2000}/>
+      
    </div>
   );
 }
