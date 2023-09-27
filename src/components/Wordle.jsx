@@ -92,6 +92,7 @@ export default function WordleEvent(){
   
   const {attemptedWords, answerKey, letter, tries} = state;
   const color = attemptedWords.map(word => calcColor(word, answerKey))
+  console.log("Answer: ",answerKey);
 
   return(
     <AppContext.Provider value={{dispatch}}>

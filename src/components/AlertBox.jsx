@@ -19,7 +19,7 @@ export default function AlertBox({show: defaultShow}) {
         <Modal.Header closeButton>
           <Modal.Title>Yayy!</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Congratulations! Would like to try again?</Modal.Body>
+        <Modal.Body>Congratulations! Would you like to try again?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Maybe, next time!

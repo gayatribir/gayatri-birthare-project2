@@ -26,7 +26,7 @@ export default function Prompt({letter}){
   const [promptWord, setPromptWord] = useState("")
 
   const showTooltip = props => (
-    <Tooltip {...props}>Please enter you word and hit enter to know the result.</Tooltip>
+    <Tooltip {...props}>Please enter the word and hit enter to know the result.</Tooltip>
   );
 
   const handleOnChange = (event)=> {

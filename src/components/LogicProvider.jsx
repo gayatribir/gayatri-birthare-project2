@@ -67,9 +67,9 @@ const LogicProvider = (props) => {
     const[recordTotalAmount, setRecordTotalAmount] = useState(0);
 
     useEffect(() => {
-        console.log('hello');
+        // console.log('hello');
         const recoveredCartState = JSON.parse(localStorage.getItem('cartState'));
-        console.log(recoveredCartState);
+        // console.log(recoveredCartState);
         setCartState({
             type: 'RECOVER',
             cartState: recoveredCartState
